@@ -1,3 +1,3 @@
 <div>
-    HELLO
+    HELLO, <span>{{$username}}</span>
 </div>
