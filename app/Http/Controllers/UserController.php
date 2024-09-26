@@ -15,6 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        $error = false;
         $users = [
             (object)[
                 'name' => 'Khai Hon'
@@ -28,9 +29,10 @@ class UserController extends Controller
             $users = User::all();
         }catch(Exception $e){
             Log::error("Database connection issue :" . $e->getMessage());
+            $error =  true;
         }
 
-        return view('home',['users' => $users]);
+        return view('home',['users' => $users, 'error' => $error]);
     }
 
     /**
