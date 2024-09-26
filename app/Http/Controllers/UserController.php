@@ -16,10 +16,10 @@ class UserController extends Controller
     public function index()
     {
         $users = [
-            [
+            (object)[
                 'name' => 'Khai Hon'
             ],
-            [
+            (object)[
                 'name' => 'ysopain'
             ]
         ];
