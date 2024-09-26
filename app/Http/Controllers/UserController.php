@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Models\User;
+use Exception;
 
 class UserController extends Controller
 {
@@ -13,7 +15,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = [
+            [
+                'name' => 'Khai Hon'
+            ],
+            [
+                'name' => 'ysopain'
+            ]
+        ];
+
+        try{
+            $users = User::all();
+        }catch(Exception $e){
+            Log::error("Database connection issue :" . $e->getMessage());
+        }
 
         return view('home',['users' => $users]);
     }
