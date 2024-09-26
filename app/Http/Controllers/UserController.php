@@ -32,7 +32,7 @@ class UserController extends Controller
             $error =  true;
         }
 
-        return view('home',['users' => $users, 'error' => $error]);
+        return view('home',['users' => $users, 'error' => $error, 'test' => 'testing']);
     }
 
     /**
