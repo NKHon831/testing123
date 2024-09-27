@@ -2,11 +2,12 @@
     Hello
 </div>
 <div>User Details</div>
-@if ($error)
-    <span><small>Not updated</small></span>
-@endif
+@if (is_null($users))
+    <span><small>No user data </small></span>
+@else
 <div>
     @foreach($users as $index => $user)
-        User {{$index+1}} : {{$user->name}}
+        User {{$index+1}} : {{$user->name}}<br>
     @endforeach
 </div>
+@endif
