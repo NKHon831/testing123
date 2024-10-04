@@ -15,18 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = null;
-        try{
-            $users = User::all();
-        }catch(Exception $e){
-            Log::error("Database connection issue :" . $e->getMessage());
-        }
 
-        return view('home',['users' => $users]);
+        return view('landingPage');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a]new resource.
      */
     public function create()
     {
