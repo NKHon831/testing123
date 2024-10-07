@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Welcome, {{$user->name}}</title>
+        <title>Welcome, {{auth()->user()->name}}</title>
     </head>
 
     <body>

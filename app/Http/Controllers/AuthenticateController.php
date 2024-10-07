@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class AuthenticateController extends Controller
 {
@@ -17,9 +18,10 @@ class AuthenticateController extends Controller
         $credentials = $request->all();
         $user = User::where('email', $credentials['email'])->first();
         if(Hash::check($credentials['password'],$user->password)){
-            return view('home', ['user' => $user]);
+            Auth::login($user);
+            return redirect()->route('home');
         }else{
-            return view('landingPage', );
+            return redirect()->route('landing-page');
         }
 
     }
@@ -38,7 +40,7 @@ class AuthenticateController extends Controller
 
         $newUser->save();
 
-        return view('landingPage');
+        return redirect()->route('landing-page');
     }
 
     public function register(): View
