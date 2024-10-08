@@ -4,6 +4,6 @@
     </head>
 
     <body>
-        <p>Random message will be shown here</p>
+        <p>Testing on git kraken</p>
     </body>
 </html>
