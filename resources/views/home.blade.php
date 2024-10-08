@@ -1,9 +1,11 @@
 <html>
     <head>
-        <title>Welcome, {{auth()->user()->name}}</title>
+        <title>Home</title>
     </head>
 
     <body>
-        <p>Random message will be shown here</p>
+        <h1>Welcome back! {{auth()->user()->name}}</h1>
+        <h2>Today's plan</h2>
+        
     </body>
 </html>
