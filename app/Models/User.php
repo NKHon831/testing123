@@ -45,7 +45,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
+    
     public function foods() : BelongsToMany
     {
         return $this->belongsToMany(Food::class, 'user_food', 'user_id', 'food_id');
