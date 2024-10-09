@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticateController;
+use App\Http\Controllers\FoodController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -14,6 +15,8 @@ Route::get('register', [AuthenticateController::class,'register'])->name('regist
 Route::post('register',[AuthenticateController::class,'createNewUser'])->name('register');
 
 Route::get('/home',[UserController::class,'home'])->name('home');
+
+Route::post('/food', [FoodController::class, 'attachFoodToUser'])->name('add-food');
 
 
 
