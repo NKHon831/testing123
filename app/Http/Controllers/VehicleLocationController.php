@@ -16,12 +16,13 @@ class VehicleLocationController extends Controller
         try{
             $baseURL = app()->environment('local') ? env('PUBLIC_TRANSPORT_LOCAL_BASE_URL') : env('PUBLIC_TRANSPORT_MOCK_BASE_URL');
             $publicTransportURL = $baseURL . '/vehicle/location' ;
+            Log::debug('uri:', ['uri' => $publicTransportURL] );
             $response = Http::get($publicTransportURL);
             $vehicle = json_decode($response);
         }catch(Exception $e){
             Log::error('Unable to fetch vehicle details');
         }
-        Log::info('vehicle: ', ['vehicle' => $vehicle]);
+        Log::debug('vehicle: ', ['vehicle' => $vehicle]);
         return view('vehicleLocation',['vehicle' => $vehicle]);
     }
 }
