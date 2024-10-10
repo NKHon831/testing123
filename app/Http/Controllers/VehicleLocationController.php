@@ -14,9 +14,9 @@ class VehicleLocationController extends Controller
     {
         $vehicle = null;
         try{
-
-            //only available for local
-            $response = Http::get('localhost:8080/vehicle/location');
+            $baseURL = app()->environment('local') ? env('PUBLIC_TRANSPORT_LOCAL_BASE_URL') : env('PUBLIC_TRANSPORT_MOCK_BASE_URL');
+            $publicTransportURL = $baseURL . '/vehicle/location' ;
+            $response = Http::get($publicTransportURL);
             $vehicle = json_decode($response);
         }catch(Exception $e){
             Log::error('Unable to fetch vehicle details');
