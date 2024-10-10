@@ -19,5 +19,6 @@
             </div>
             <button type="submit">Add</button>
         </form>
+        <button onclick="window.location.href='{{ route('vehicle-location') }}';">Get Vehicle Location</button>
     </body>
 </html>
