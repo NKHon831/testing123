@@ -14,7 +14,7 @@ class VehicleLocationController extends Controller
     {
         $vehicle = null;
         try{
-            $baseURL = app()->environment('local') ? env('PUBLIC_TRANSPORT_LOCAL_BASE_URL') : env('PUBLIC_TRANSPORT_MOCK_BASE_URL');
+            $baseURL = app()->isLocal() ? env('PUBLIC_TRANSPORT_LOCAL_BASE_URL') : env('PUBLIC_TRANSPORT_MOCK_BASE_URL');
             $publicTransportURL = $baseURL . '/vehicle/location' ;
             Log::debug('uri:', ['uri' => $publicTransportURL] );
             $response = Http::get($publicTransportURL);
