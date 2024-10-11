@@ -23,6 +23,7 @@ class VehicleLocationController extends Controller
             Log::error('Unable to fetch vehicle details');
         }
         Log::debug('vehicle: ', ['vehicle' => $vehicle]);
-        return view('vehicleLocation',['vehicle' => $vehicle]);
+        
+        return response()->json($vehicle);
     }
 }

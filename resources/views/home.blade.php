@@ -5,20 +5,40 @@
 
     <body>
         <h1>Welcome back! {{auth()->user()->name}}</h1>
-        @if(auth()->user()->foods()->count() > 0)
-            <h2>Your preference food</h2>
-            @foreach(auth()->user()->foods as $index => $food)
-                <p>{{$index+1}}. {{$food->name}}</p>
-            @endforeach
-        @endif
-        <form action='{{route('add-food')}}' method="POST">
-            @csrf
-            <div>
-                <label for="food_name">Enter food name: </label>
-                <input type="text" id="food_name" name="food_name">   
-            </div>
-            <button type="submit">Add</button>
-        </form>
-        <button onclick="window.location.href='{{ route('vehicle-location') }}';">Get Vehicle Location</button>
+        <x-top-navigation-bar/>
+
+        <div class="modal" id="user-preferecence-modal"></div>
     </body>
 </html>
+
+<!-- Hiddle modal -->
+ <x-food/>
+ <x-transport/>
+ <x-accomodation/>
+
+<script>
+    function changeModalContent(contentType){
+        const modal = document.getElementById('user-preferecence-modal');
+        let contentHtml = '';
+
+        switch (contentType) {
+            case 'FOOD' : {
+                contentHtml =  document.getElementById('food-modal').innerHTML;
+                break;
+            } 
+            case 'TRANSPORT' : {
+                contentHtml =  document.getElementById('transport-modal').innerHTML;
+                break;
+            } 
+            case 'ACCOMODATION' : {
+                contentHtml =  document.getElementById('accomodation-modal').innerHTML;
+                break;
+            } 
+            default : {
+                let contentHtml = '<div>No modal is found<div/>';
+            }
+        }
+
+        modal.innerHTML = contentHtml;
+    }
+</script>
